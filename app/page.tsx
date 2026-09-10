@@ -288,12 +288,23 @@ export default function DakhaBrakhaGame() {
         ))}
       </div>
 
-      {/* Dynamic Results Display - Tighter internal padding */}
+{/* Dynamic Results Display - Tighter internal padding */}
       {selectedSong && (
         <div id="ritual-video" className="w-full max-w-3xl mx-auto mt-2 p-[1px] transition-colors duration-1000 scroll-mt-6" style={{ backgroundColor: `${accentColor}40` }}>
-          <div className="bg-[#141414] p-4 md:p-6 flex flex-col items-center">
+          {/* Added 'relative' here so the absolute button aligns to this box */}
+          <div className="bg-[#141414] p-4 md:p-6 flex flex-col items-center relative">
             
-            <h2 className="text-base md:text-lg uppercase tracking-[0.3em] mb-4 text-[#f4f4f0] text-center">
+            {/* Minimize / Close Button */}
+            <button
+              onClick={() => setSelectedSong(null)}
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 w-8 h-8 flex items-center justify-center text-[#f4f4f0]/40 hover:text-[#f4f4f0] transition-colors text-lg"
+              aria-label="Minimize"
+            >
+              ✕
+            </button>
+
+            {/* Added mt-4 sm:mt-0 to prevent the text from overlapping the button on small screens */}
+            <h2 className="text-base md:text-lg uppercase tracking-[0.3em] mb-4 text-[#f4f4f0] text-center mt-4 sm:mt-0">
               The <span style={{ color: accentColor }} className="transition-colors duration-1000 font-bold">{selectedCategory}</span> Pull
             </h2>
             
